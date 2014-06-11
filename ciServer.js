@@ -17,7 +17,7 @@ app.get('/', function(req, res){
 });
 app.post('/', function(req, res){
   console.log(req.body);
-  req.body.action === "push" || req.body.zen && gitPull();
+  req.body.commits.distinct && gitPull();
   res.send(204);
 });
 
