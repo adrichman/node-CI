@@ -12,6 +12,9 @@ function gitPull(){
 app.use(bodyParser());
 app.use(morgan({ format: 'dev', immediate: true }));
 
+app.get('/', function(req, res){
+  res.send(200, "GOTTEN");
+});
 app.post('/', function(req, res){
   console.log(req.body);
   req.body.action === "push" || req.body.zen && gitPull();
