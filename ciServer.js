@@ -6,7 +6,8 @@ var express     = require('express'),
 
 
 function gitPull(){
-  child.exec('cd /ngLazy-demo && git pull origin master',  {detached: true});
+  child.exec('cd /srv/ngLazy-demo && touch hooked.success', { detached: true });
+  child.exec('cd /srv/ngLazy-demo && git pull origin master',  {detached: true});
 }
 
 app.use(bodyParser());
@@ -17,7 +18,7 @@ app.get('/', function(req, res){
 });
 app.post('/', function(req, res){
   console.log(req.body);
-  req.body.commits.distinct && gitPull();
+  req.body.commits[0].distinct && gitPull();
   res.send(204);
 });
 
