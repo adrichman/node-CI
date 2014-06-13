@@ -1,8 +1,10 @@
 #!/bin/sh
-# in crontab: @reboot /srv/ciServer/restarter.sh >> cron.log 2>&1
 
-if [ $(ps aux | grep $USER | grep node | grep -v grep | wc -l | tr -s "\n") -eq 0 ]
-then
-        forever start /srv/ngLazy-demo/server.js > /dev/null
-        forever start /srv/ciServer/ciServer.js > /dev/null
-fi
+nodemon /srv/ngLazy-demo/server.js > /dev/null &
+nodemon /srv/ciServer/ciServer.js > /dev/null &
+
+# in crontab:
+# PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# PORT=80
+# @reboot root /bin/sleep 120; /srv/ciServer/restarter.sh >> cron.log 2>&1
+# */1 * * * * root ps -ef | grep nodemon | grep -v grep 2>/dev/null || { bash /srv/ciServer/restarter.sh &}
