@@ -8,3 +8,4 @@ nodemon /srv/ciServer/ciServer.js > /dev/null &
 # PORT=80
 # @reboot root /bin/sleep 120; /srv/ciServer/restarter.sh >> cron.log 2>&1
 # */1 * * * * root ps -ef | grep nodemon | grep -v grep 2>/dev/null || { zsh /srv/ciServer/restarter.sh &}
+
