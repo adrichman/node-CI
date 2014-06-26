@@ -7,7 +7,7 @@ var express     = require('express'),
 
 function gitPull(){
   child.exec('cd /srv/ngLazy-demo && touch hooked.success',   { detached: true });
-  child.exec('cd /srv/ngLazy-demo && git pull origin master && npm install && bower install', { detached: true });
+  child.exec('cd /srv/ngLazy-demo && git pull origin master && npm install && bower install --allow-root && bower update ngLazy --allow-root', { detached: true });
 }
 
 app.use(bodyParser());

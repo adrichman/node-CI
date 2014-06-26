@@ -10,3 +10,7 @@ In addition, ```restarter.sh``` , which starts both servers when executed, conta
 Currently implemented on Ubuntu 14.04
 
 Requires: node, npm && ```npm install nodemon -g```
+
+###Changes:
+
+* v0.1.1 added update command to node script for ngLazy library :)
